@@ -3,10 +3,10 @@
  */
 
 import {AppRegistry} from 'react-native';
-import App from './src/App';
+import Index from './src/index';
 import appName from './app.json';
 
-AppRegistry.registerComponent(appName.name, () => App);
+AppRegistry.registerComponent(appName.name, () => Index);
 
 // Run application on web
 if (typeof document !== 'undefined') {
