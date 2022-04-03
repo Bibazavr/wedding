@@ -4,11 +4,13 @@ const babelConfig = require('./babel.config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // This is needed for webpack to import static images in JavaScript files.
 const imageLoaderConfiguration = {
-  test: /\.(gif|jpe?g|png|svg|webp)$/,
+  test: /\.(gif|jpe?g|png|svg)$/,
+  type: 'javascript/auto',
   use: {
-    loader: 'url-loader',
+    loader: 'file-loader',
     options: {
-      name: '[name].[ext]',
+      name: 'images/[name].[ext]',
+      esModule: false,
     },
   },
 };
@@ -17,6 +19,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'docs'),
     filename: 'js/[name].bundle.js',
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
   target: 'web',
   mode: 'development',
