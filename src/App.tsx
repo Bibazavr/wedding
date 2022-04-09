@@ -1,14 +1,16 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {} from '@rneui/themed';
-import {StyleSheet, Image} from 'react-native';
+import {StyleSheet} from 'react-native';
 import CustomHeader from './Header';
+import {Map} from './map';
+import {Timer} from './timer';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <CustomHeader />
-      <Image source={{uri: require('./img/lynx.jpg'), height: 1000}} />
+      <Timer />
+      <Map />
     </SafeAreaView>
   );
 };
