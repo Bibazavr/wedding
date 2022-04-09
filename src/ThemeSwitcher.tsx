@@ -10,7 +10,7 @@ const ThemeSwitcher = () => {
     }));
   };
 
-  return <Icon name={'copy'} type={'font-awesome'} onPress={toggleTheme} />;
+  return <Icon name="paper-plane" type="font-awesome" onPress={toggleTheme} />;
 };
 
 export default ThemeSwitcher;

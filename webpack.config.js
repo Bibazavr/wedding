@@ -51,6 +51,14 @@ module.exports = {
       },
       {enforce: 'pre', test: /\.js$/, loader: 'source-map-loader'},
       imageLoaderConfiguration,
+      {
+        test: /\.ttf$/,
+        loader: 'url-loader', // or directly file-loader
+        include: path.resolve(
+          __dirname,
+          'node_modules/react-native-vector-icons',
+        ),
+      },
     ],
   },
   plugins: [
