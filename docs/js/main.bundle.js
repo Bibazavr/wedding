@@ -5230,10 +5230,9 @@ const App = () => {
                 react_1.default.createElement(base_1.Text, { style: styles.textSecond },
                     "07.06.2022",
                     '\n',
-                    react_1.default.createElement(base_1.Text, { style: { fontWeight: 'bold' } }, "\u041A\u0438\u0440\u0438\u043B\u043B \u0438 \u0410\u043D\u043D\u0430"),
-                    " ",
+                    react_1.default.createElement(base_1.Text, { style: { fontWeight: 'bold', fontFamily: 'Cursive' } }, "\u041A\u0438\u0440\u0438\u043B\u043B \u0438 \u0410\u043D\u043D\u0430"),
                     '\n',
-                    react_1.default.createElement(base_1.Text, { style: { fontStyle: 'italic' } },
+                    react_1.default.createElement(base_1.Text, { style: { fontStyle: 'italic', fontFamily: 'Cursive' } },
                         "\u0441\u043A\u0430\u0436\u0443\u0442 \u0432\u0430\u0436\u043D\u044B\u0435 \u0441\u043B\u043E\u0432\u0430 \u0432\u00A0\u043E\u043A\u0440\u0443\u0436\u0435\u043D\u0438\u0438 \u0440\u043E\u0434\u043D\u044B\u0445 \u0438 \u0431\u043B\u0438\u0437\u043A\u0438\u0445 ",
                         '\n',
                         "\u0421\u0431\u043E\u0440 \u0433\u043E\u0441\u0442\u0435\u0439 \u0432 16:00")))),
@@ -5858,7 +5857,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("e8a7933c0e4524fd6dec")
+/******/ 		__webpack_require__.h = () => ("ac32d761b49cb2a450a5")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

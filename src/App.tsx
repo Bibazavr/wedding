@@ -30,8 +30,11 @@ const App = () => {
 
           <Text style={styles.textSecond}>
             07.06.2022{'\n'}
-            <Text style={{fontWeight: 'bold'}}>Кирилл и Анна</Text> {'\n'}
-            <Text style={{fontStyle: 'italic'}}>
+            <Text style={{fontWeight: 'bold', fontFamily: 'Cursive'}}>
+              Кирилл и Анна
+            </Text>
+            {'\n'}
+            <Text style={{fontStyle: 'italic', fontFamily: 'Cursive'}}>
               скажут важные слова в&nbsp;окружении родных и близких {'\n'}Сбор
               гостей в 16:00
             </Text>
