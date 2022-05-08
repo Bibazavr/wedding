@@ -2,12 +2,24 @@ const path = require('path');
 const webpack = require('webpack');
 const babelConfig = require('./babel.config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+// This is needed for webpack to import static images in JavaScript files.
+const imageLoaderConfiguration = {
+  test: /\.(gif|jpe?g|png|svg)$/,
+  type: 'javascript/auto',
+  use: {
+    loader: 'file-loader',
+    options: {
+      name: 'images/[name].[ext]',
+      esModule: false,
+    },
+  },
+};
 module.exports = {
   entry: path.resolve(__dirname, 'index.js'),
   output: {
     path: path.resolve(__dirname, 'docs'),
     filename: 'js/[name].bundle.js',
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
   target: 'web',
   mode: 'development',
@@ -38,6 +50,15 @@ module.exports = {
         },
       },
       {enforce: 'pre', test: /\.js$/, loader: 'source-map-loader'},
+      imageLoaderConfiguration,
+      {
+        test: /\.ttf$/,
+        loader: 'url-loader', // or directly file-loader
+        include: path.resolve(
+          __dirname,
+          'node_modules/react-native-vector-icons',
+        ),
+      },
     ],
   },
   plugins: [
