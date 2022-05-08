@@ -5254,7 +5254,6 @@ const styles = react_native_1.StyleSheet.create({
         flexWrap: 'wrap',
     },
     secondContainer: {
-        flexDirection: 'row',
         flex: 1,
         flexWrap: 'wrap',
         alignItems: 'center',
@@ -5848,7 +5847,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("93aa3660c0eaefe2530c")
+/******/ 		__webpack_require__.h = () => ("c7986045face5c18955a")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

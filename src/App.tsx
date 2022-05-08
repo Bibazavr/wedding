@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   secondContainer: {
-    flexDirection: 'row',
     flex: 1,
     flexWrap: 'wrap',
     alignItems: 'center',
