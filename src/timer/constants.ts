@@ -1,3 +1,3 @@
 import dayjs from '../date';
 
-export const weddingDate = dayjs('06.07.2022 16:00');
+export const weddingDate = dayjs('07.06.2022 16:00', 'DD.MM.YYYY hh:mm', 'ru');

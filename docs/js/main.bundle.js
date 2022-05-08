@@ -1847,6 +1847,16 @@ Object.defineProperty(exports, "__esModule", ({value:true}));exports["default"]=
 
 /***/ }),
 
+/***/ "./node_modules/dayjs/plugin/customParseFormat.js":
+/*!********************************************************!*\
+  !*** ./node_modules/dayjs/plugin/customParseFormat.js ***!
+  \********************************************************/
+/***/ (function(module) {
+
+!function(t,e){ true?module.exports=e():0;}(this,function(){"use strict";var t={LTS:"h:mm:ss A",LT:"h:mm A",L:"MM/DD/YYYY",LL:"MMMM D, YYYY",LLL:"MMMM D, YYYY h:mm A",LLLL:"dddd, MMMM D, YYYY h:mm A"},e=/(\[[^[]*\])|([-:/.()\s]+)|(A|a|YYYY|YY?|MM?M?M?|Do|DD?|hh?|HH?|mm?|ss?|S{1,3}|z|ZZ?)/g,n=/\d\d/,r=/\d\d?/,i=/\d*[^\s\d-_:/()]+/,o={},s=function s(t){return(t=+t)+(t>68?1900:2e3);};var a=function a(t){return function(e){this[t]=+e;};},f=[/[+-]\d\d:?(\d\d)?|Z/,function(t){(this.zone||(this.zone={})).offset=function(t){if(!t)return 0;if("Z"===t)return 0;var e=t.match(/([+-]|\d\d)/g),n=60*e[1]+(+e[2]||0);return 0===n?0:"+"===e[0]?-n:n;}(t);}],u=function u(t){var e=o[t];return e&&(e.indexOf?e:e.s.concat(e.f));},h=function h(t,e){var n,r=o.meridiem;if(r){for(var i=1;i<=24;i+=1){if(t.indexOf(r(i,0,e))>-1){n=i>12;break;}}}else n=t===(e?"pm":"PM");return n;},d={A:[i,function(t){this.afternoon=h(t,!1);}],a:[i,function(t){this.afternoon=h(t,!0);}],S:[/\d/,function(t){this.milliseconds=100*+t;}],SS:[n,function(t){this.milliseconds=10*+t;}],SSS:[/\d{3}/,function(t){this.milliseconds=+t;}],s:[r,a("seconds")],ss:[r,a("seconds")],m:[r,a("minutes")],mm:[r,a("minutes")],H:[r,a("hours")],h:[r,a("hours")],HH:[r,a("hours")],hh:[r,a("hours")],D:[r,a("day")],DD:[n,a("day")],Do:[i,function(t){var e=o.ordinal,n=t.match(/\d+/);if(this.day=n[0],e)for(var r=1;r<=31;r+=1){e(r).replace(/\[|\]/g,"")===t&&(this.day=r);}}],M:[r,a("month")],MM:[n,a("month")],MMM:[i,function(t){var e=u("months"),n=(u("monthsShort")||e.map(function(t){return t.substr(0,3);})).indexOf(t)+1;if(n<1)throw new Error();this.month=n%12||n;}],MMMM:[i,function(t){var e=u("months").indexOf(t)+1;if(e<1)throw new Error();this.month=e%12||e;}],Y:[/[+-]?\d+/,a("year")],YY:[n,function(t){this.year=s(t);}],YYYY:[/\d{4}/,a("year")],Z:f,ZZ:f};function c(n){var r,i;r=n,i=o&&o.formats;for(var s=(n=r.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g,function(e,n,r){var o=r&&r.toUpperCase();return n||i[r]||t[r]||i[o].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g,function(t,e,n){return e||n.slice(1);});})).match(e),a=s.length,f=0;f<a;f+=1){var u=s[f],h=d[u],c=h&&h[0],l=h&&h[1];s[f]=l?{regex:c,parser:l}:u.replace(/^\[|\]$/g,"");}return function(t){for(var e={},n=0,r=0;n<a;n+=1){var i=s[n];if("string"==typeof i)r+=i.length;else{var o=i.regex,f=i.parser,u=t.substr(r),h=o.exec(u)[0];f.call(e,h),t=t.replace(h,"");}}return function(t){var e=t.afternoon;if(void 0!==e){var n=t.hours;e?n<12&&(t.hours+=12):12===n&&(t.hours=0),delete t.afternoon;}}(e),e;};}return function(t,e,n){n.p.customParseFormat=!0,t&&t.parseTwoDigitYear&&(s=t.parseTwoDigitYear);var r=e.prototype,i=r.parse;r.parse=function(t){var e=t.date,r=t.utc,s=t.args;this.$u=r;var a=s[1];if("string"==typeof a){var f=!0===s[2],u=!0===s[3],h=f||u,d=s[2];u&&(d=s[2]),o=this.$locale(),!f&&d&&(o=n.Ls[d]),this.$d=function(t,e,n){try{if(["x","X"].indexOf(e)>-1)return new Date(("X"===e?1e3:1)*t);var r=c(e)(t),i=r.year,o=r.month,s=r.day,a=r.hours,f=r.minutes,u=r.seconds,h=r.milliseconds,d=r.zone,l=new Date(),m=s||(i||o?1:l.getDate()),M=i||l.getFullYear(),Y=0;i&&!o||(Y=o>0?o-1:l.getMonth());var p=a||0,v=f||0,D=u||0,g=h||0;return d?new Date(Date.UTC(M,Y,m,p,v,D,g+60*d.offset*1e3)):n?new Date(Date.UTC(M,Y,m,p,v,D,g)):new Date(M,Y,m,p,v,D,g);}catch(t){return new Date("");}}(e,a,r),this.init(),d&&!0!==d&&(this.$L=this.locale(d).$L),h&&e!=this.format(a)&&(this.$d=new Date("")),o={};}else if(a instanceof Array)for(var l=a.length,m=1;m<=l;m+=1){s[1]=a[m-1];var M=n.apply(this,s);if(M.isValid()){this.$d=M.$d,this.$L=M.$L,this.init();break;}m===l&&(this.$d=new Date(""));}else i.call(this,t);};};});
+
+/***/ }),
+
 /***/ "./node_modules/dayjs/plugin/relativeTime.js":
 /*!***************************************************!*\
   !*** ./node_modules/dayjs/plugin/relativeTime.js ***!
@@ -5333,6 +5343,8 @@ const dayjs_1 = __importDefault(__webpack_require__(/*! dayjs */ "./node_modules
 __webpack_require__(/*! dayjs/locale/ru */ "./node_modules/dayjs/locale/ru.js"); // import locale
 __webpack_require__(/*! dayjs/locale/ru */ "./node_modules/dayjs/locale/ru.js");
 const relativeTime_1 = __importDefault(__webpack_require__(/*! dayjs/plugin/relativeTime */ "./node_modules/dayjs/plugin/relativeTime.js"));
+const customParseFormat_1 = __importDefault(__webpack_require__(/*! dayjs/plugin/customParseFormat */ "./node_modules/dayjs/plugin/customParseFormat.js"));
+dayjs_1.default.extend(customParseFormat_1.default);
 dayjs_1.default.extend(relativeTime_1.default);
 dayjs_1.default.locale('ru'); // use locale
 const bib = dayjs_1.default;
@@ -5437,7 +5449,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.weddingDate = void 0;
 const date_1 = __importDefault(__webpack_require__(/*! ../date */ "./src/date/index.ts"));
-exports.weddingDate = (0, date_1.default)('06.07.2022 16:00');
+exports.weddingDate = (0, date_1.default)('07.06.2022 16:00', 'DD.MM.YYYY hh:mm', 'ru');
 
 
 /***/ }),
@@ -5774,7 +5786,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -5789,7 +5801,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
 /******/ 		try {
 /******/ 			var execOptions = { id: moduleId, module: module, factory: __webpack_modules__[moduleId], require: __webpack_require__ };
@@ -5800,23 +5812,23 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			module.error = e;
 /******/ 			throw e;
 /******/ 		}
-/******/
+/******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+/******/ 	
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
-/******/
+/******/ 	
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = __webpack_module_cache__;
-/******/
+/******/ 	
 /******/ 	// expose the module execution interceptor
 /******/ 	__webpack_require__.i = [];
-/******/
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
@@ -5829,7 +5841,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/get javascript update chunk filename */
 /******/ 	(() => {
 /******/ 		// This function allow to reference all chunks
@@ -5838,17 +5850,17 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			return "" + chunkId + "." + __webpack_require__.h() + ".hot-update.js";
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/get update manifest filename */
 /******/ 	(() => {
 /******/ 		__webpack_require__.hmrF = () => ("main." + __webpack_require__.h() + ".hot-update.json");
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("eac5842d25c4dcbc9d71")
+/******/ 		__webpack_require__.h = () => ("534680bd844e01d49baf")
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -5860,12 +5872,12 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/load script */
 /******/ 	(() => {
 /******/ 		var inProgress = {};
@@ -5884,7 +5896,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			if(!script) {
 /******/ 				needAttach = true;
 /******/ 				script = document.createElement('script');
-/******/
+/******/ 		
 /******/ 				script.charset = 'utf-8';
 /******/ 				script.timeout = 120;
 /******/ 				if (__webpack_require__.nc) {
@@ -5911,7 +5923,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			needAttach && document.head.appendChild(script);
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -5922,7 +5934,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
@@ -5931,31 +5943,31 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/hot module replacement */
 /******/ 	(() => {
 /******/ 		var currentModuleData = {};
 /******/ 		var installedModules = __webpack_require__.c;
-/******/
+/******/ 		
 /******/ 		// module and require creation
 /******/ 		var currentChildModule;
 /******/ 		var currentParents = [];
-/******/
+/******/ 		
 /******/ 		// status
 /******/ 		var registeredStatusHandlers = [];
 /******/ 		var currentStatus = "idle";
-/******/
+/******/ 		
 /******/ 		// while downloading
 /******/ 		var blockingPromises = 0;
 /******/ 		var blockingPromisesWaiting = [];
-/******/
+/******/ 		
 /******/ 		// The update info
 /******/ 		var currentUpdateApplyHandlers;
 /******/ 		var queuedInvalidatedModules;
-/******/
+/******/ 		
 /******/ 		// eslint-disable-next-line no-unused-vars
 /******/ 		__webpack_require__.hmrD = currentModuleData;
-/******/
+/******/ 		
 /******/ 		__webpack_require__.i.push(function (options) {
 /******/ 			var module = options.module;
 /******/ 			var require = createRequire(options.require, options.id);
@@ -5965,10 +5977,10 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			currentParents = [];
 /******/ 			options.require = require;
 /******/ 		});
-/******/
+/******/ 		
 /******/ 		__webpack_require__.hmrC = {};
 /******/ 		__webpack_require__.hmrI = {};
-/******/
+/******/ 		
 /******/ 		function createRequire(require, moduleId) {
 /******/ 			var me = installedModules[moduleId];
 /******/ 			if (!me) return require;
@@ -6019,7 +6031,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			};
 /******/ 			return fn;
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		function createModuleHotObject(moduleId, me) {
 /******/ 			var _main = currentChildModule !== moduleId;
 /******/ 			var hot = {
@@ -6037,7 +6049,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 					currentChildModule = _main ? undefined : moduleId;
 /******/ 					__webpack_require__(moduleId);
 /******/ 				},
-/******/
+/******/ 		
 /******/ 				// Module API
 /******/ 				active: true,
 /******/ 				accept: function (dep, callback, errorHandler) {
@@ -6104,7 +6116,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 							break;
 /******/ 					}
 /******/ 				},
-/******/
+/******/ 		
 /******/ 				// Management API
 /******/ 				check: hotCheck,
 /******/ 				apply: hotApply,
@@ -6119,24 +6131,24 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 					var idx = registeredStatusHandlers.indexOf(l);
 /******/ 					if (idx >= 0) registeredStatusHandlers.splice(idx, 1);
 /******/ 				},
-/******/
+/******/ 		
 /******/ 				//inherit from previous dispose call
 /******/ 				data: currentModuleData[moduleId]
 /******/ 			};
 /******/ 			currentChildModule = undefined;
 /******/ 			return hot;
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		function setStatus(newStatus) {
 /******/ 			currentStatus = newStatus;
 /******/ 			var results = [];
-/******/
+/******/ 		
 /******/ 			for (var i = 0; i < registeredStatusHandlers.length; i++)
 /******/ 				results[i] = registeredStatusHandlers[i].call(null, newStatus);
-/******/
+/******/ 		
 /******/ 			return Promise.all(results);
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		function unblock() {
 /******/ 			if (--blockingPromises === 0) {
 /******/ 				setStatus("ready").then(function () {
@@ -6150,7 +6162,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 				});
 /******/ 			}
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		function trackBlockingPromise(promise) {
 /******/ 			switch (currentStatus) {
 /******/ 				case "ready":
@@ -6164,7 +6176,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 					return promise;
 /******/ 			}
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		function waitForBlockingPromises(fn) {
 /******/ 			if (blockingPromises === 0) return fn();
 /******/ 			return new Promise(function (resolve) {
@@ -6173,7 +6185,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 				});
 /******/ 			});
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		function hotCheck(applyOnUpdate) {
 /******/ 			if (currentStatus !== "idle") {
 /******/ 				throw new Error("check() is only allowed in idle status");
@@ -6188,11 +6200,11 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 							}
 /******/ 						);
 /******/ 					}
-/******/
+/******/ 		
 /******/ 					return setStatus("prepare").then(function () {
 /******/ 						var updatedModules = [];
 /******/ 						currentUpdateApplyHandlers = [];
-/******/
+/******/ 		
 /******/ 						return Promise.all(
 /******/ 							Object.keys(__webpack_require__.hmrC).reduce(function (
 /******/ 								promises,
@@ -6223,7 +6235,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 					});
 /******/ 				});
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		function hotApply(options) {
 /******/ 			if (currentStatus !== "ready") {
 /******/ 				return Promise.resolve().then(function () {
@@ -6236,44 +6248,44 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			}
 /******/ 			return internalApply(options);
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		function internalApply(options) {
 /******/ 			options = options || {};
-/******/
+/******/ 		
 /******/ 			applyInvalidatedModules();
-/******/
+/******/ 		
 /******/ 			var results = currentUpdateApplyHandlers.map(function (handler) {
 /******/ 				return handler(options);
 /******/ 			});
 /******/ 			currentUpdateApplyHandlers = undefined;
-/******/
+/******/ 		
 /******/ 			var errors = results
 /******/ 				.map(function (r) {
 /******/ 					return r.error;
 /******/ 				})
 /******/ 				.filter(Boolean);
-/******/
+/******/ 		
 /******/ 			if (errors.length > 0) {
 /******/ 				return setStatus("abort").then(function () {
 /******/ 					throw errors[0];
 /******/ 				});
 /******/ 			}
-/******/
+/******/ 		
 /******/ 			// Now in "dispose" phase
 /******/ 			var disposePromise = setStatus("dispose");
-/******/
+/******/ 		
 /******/ 			results.forEach(function (result) {
 /******/ 				if (result.dispose) result.dispose();
 /******/ 			});
-/******/
+/******/ 		
 /******/ 			// Now in "apply" phase
 /******/ 			var applyPromise = setStatus("apply");
-/******/
+/******/ 		
 /******/ 			var error;
 /******/ 			var reportError = function (err) {
 /******/ 				if (!error) error = err;
 /******/ 			};
-/******/
+/******/ 		
 /******/ 			var outdatedModules = [];
 /******/ 			results.forEach(function (result) {
 /******/ 				if (result.apply) {
@@ -6285,7 +6297,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 					}
 /******/ 				}
 /******/ 			});
-/******/
+/******/ 		
 /******/ 			return Promise.all([disposePromise, applyPromise]).then(function () {
 /******/ 				// handle errors in accept handlers and self accepted module load
 /******/ 				if (error) {
@@ -6293,7 +6305,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 						throw error;
 /******/ 					});
 /******/ 				}
-/******/
+/******/ 		
 /******/ 				if (queuedInvalidatedModules) {
 /******/ 					return internalApply(options).then(function (list) {
 /******/ 						outdatedModules.forEach(function (moduleId) {
@@ -6302,13 +6314,13 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 						return list;
 /******/ 					});
 /******/ 				}
-/******/
+/******/ 		
 /******/ 				return setStatus("idle").then(function () {
 /******/ 					return outdatedModules;
 /******/ 				});
 /******/ 			});
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		function applyInvalidatedModules() {
 /******/ 			if (queuedInvalidatedModules) {
 /******/ 				if (!currentUpdateApplyHandlers) currentUpdateApplyHandlers = [];
@@ -6325,7 +6337,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			}
 /******/ 		}
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
 /******/ 		var scriptUrl;
@@ -6345,24 +6357,24 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
 /******/ 		__webpack_require__.p = scriptUrl + "../";
 /******/ 	})();
-/******/
+/******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
-/******/
+/******/ 		
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = __webpack_require__.hmrS_jsonp = __webpack_require__.hmrS_jsonp || {
 /******/ 			"main": 0
 /******/ 		};
-/******/
+/******/ 		
 /******/ 		// no chunk on demand loading
-/******/
+/******/ 		
 /******/ 		// no prefetching
-/******/
+/******/ 		
 /******/ 		// no preloaded
-/******/
+/******/ 		
 /******/ 		var currentUpdatedModulesList;
 /******/ 		var waitingUpdateResolves = {};
 /******/ 		function loadUpdateChunk(chunkId, updatedModulesList) {
@@ -6388,7 +6400,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 				__webpack_require__.l(url, loadingEnded);
 /******/ 			});
 /******/ 		}
-/******/
+/******/ 		
 /******/ 		self["webpackHotUpdatewedding"] = (chunkId, moreModules, runtime) => {
 /******/ 			for(var moduleId in moreModules) {
 /******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
@@ -6402,7 +6414,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 				waitingUpdateResolves[chunkId] = undefined;
 /******/ 			}
 /******/ 		};
-/******/
+/******/ 		
 /******/ 		var currentUpdateChunks;
 /******/ 		var currentUpdate;
 /******/ 		var currentUpdateRemovedChunks;
@@ -6413,7 +6425,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 			function getAffectedModuleEffects(updateModuleId) {
 /******/ 				var outdatedModules = [updateModuleId];
 /******/ 				var outdatedDependencies = {};
-/******/
+/******/ 		
 /******/ 				var queue = outdatedModules.map(function (id) {
 /******/ 					return {
 /******/ 						chain: [id],
@@ -6471,7 +6483,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 						});
 /******/ 					}
 /******/ 				}
-/******/
+/******/ 		
 /******/ 				return {
 /******/ 					type: "accepted",
 /******/ 					moduleId: updateModuleId,
@@ -6479,26 +6491,26 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 					outdatedDependencies: outdatedDependencies
 /******/ 				};
 /******/ 			}
-/******/
+/******/ 		
 /******/ 			function addAllToSet(a, b) {
 /******/ 				for (var i = 0; i < b.length; i++) {
 /******/ 					var item = b[i];
 /******/ 					if (a.indexOf(item) === -1) a.push(item);
 /******/ 				}
 /******/ 			}
-/******/
+/******/ 		
 /******/ 			// at begin all updates modules are outdated
 /******/ 			// the "outdated" status can propagate to parents if they don't accept the children
 /******/ 			var outdatedDependencies = {};
 /******/ 			var outdatedModules = [];
 /******/ 			var appliedUpdate = {};
-/******/
+/******/ 		
 /******/ 			var warnUnexpectedRequire = function warnUnexpectedRequire(module) {
 /******/ 				console.warn(
 /******/ 					"[HMR] unexpected require(" + module.id + ") to disposed module"
 /******/ 				);
 /******/ 			};
-/******/
+/******/ 		
 /******/ 			for (var moduleId in currentUpdate) {
 /******/ 				if (__webpack_require__.o(currentUpdate, moduleId)) {
 /******/ 					var newModuleFactory = currentUpdate[moduleId];
@@ -6585,7 +6597,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 				}
 /******/ 			}
 /******/ 			currentUpdate = undefined;
-/******/
+/******/ 		
 /******/ 			// Store self accepted outdated modules to require them later by the module system
 /******/ 			var outdatedSelfAcceptedModules = [];
 /******/ 			for (var j = 0; j < outdatedModules.length; j++) {
@@ -6606,41 +6618,41 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 					});
 /******/ 				}
 /******/ 			}
-/******/
+/******/ 		
 /******/ 			var moduleOutdatedDependencies;
-/******/
+/******/ 		
 /******/ 			return {
 /******/ 				dispose: function () {
 /******/ 					currentUpdateRemovedChunks.forEach(function (chunkId) {
 /******/ 						delete installedChunks[chunkId];
 /******/ 					});
 /******/ 					currentUpdateRemovedChunks = undefined;
-/******/
+/******/ 		
 /******/ 					var idx;
 /******/ 					var queue = outdatedModules.slice();
 /******/ 					while (queue.length > 0) {
 /******/ 						var moduleId = queue.pop();
 /******/ 						var module = __webpack_require__.c[moduleId];
 /******/ 						if (!module) continue;
-/******/
+/******/ 		
 /******/ 						var data = {};
-/******/
+/******/ 		
 /******/ 						// Call dispose handlers
 /******/ 						var disposeHandlers = module.hot._disposeHandlers;
 /******/ 						for (j = 0; j < disposeHandlers.length; j++) {
 /******/ 							disposeHandlers[j].call(null, data);
 /******/ 						}
 /******/ 						__webpack_require__.hmrD[moduleId] = data;
-/******/
+/******/ 		
 /******/ 						// disable module (this disables requires from this module)
 /******/ 						module.hot.active = false;
-/******/
+/******/ 		
 /******/ 						// remove module from cache
 /******/ 						delete __webpack_require__.c[moduleId];
-/******/
+/******/ 		
 /******/ 						// when disposing there is no need to call dispose handler
 /******/ 						delete outdatedDependencies[moduleId];
-/******/
+/******/ 		
 /******/ 						// remove "parents" references from all children
 /******/ 						for (j = 0; j < module.children.length; j++) {
 /******/ 							var child = __webpack_require__.c[module.children[j]];
@@ -6651,7 +6663,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 							}
 /******/ 						}
 /******/ 					}
-/******/
+/******/ 		
 /******/ 					// remove outdated dependency from module children
 /******/ 					var dependency;
 /******/ 					for (var outdatedModuleId in outdatedDependencies) {
@@ -6676,12 +6688,12 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 							__webpack_require__.m[updateModuleId] = appliedUpdate[updateModuleId];
 /******/ 						}
 /******/ 					}
-/******/
+/******/ 		
 /******/ 					// run new runtime modules
 /******/ 					for (var i = 0; i < currentUpdateRuntime.length; i++) {
 /******/ 						currentUpdateRuntime[i](__webpack_require__);
 /******/ 					}
-/******/
+/******/ 		
 /******/ 					// call accept handlers
 /******/ 					for (var outdatedModuleId in outdatedDependencies) {
 /******/ 						if (__webpack_require__.o(outdatedDependencies, outdatedModuleId)) {
@@ -6748,7 +6760,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 							}
 /******/ 						}
 /******/ 					}
-/******/
+/******/ 		
 /******/ 					// Load self accepted modules
 /******/ 					for (var o = 0; o < outdatedSelfAcceptedModules.length; o++) {
 /******/ 						var item = outdatedSelfAcceptedModules[o];
@@ -6790,7 +6802,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 							}
 /******/ 						}
 /******/ 					}
-/******/
+/******/ 		
 /******/ 					return outdatedModules;
 /******/ 				}
 /******/ 			};
@@ -6846,7 +6858,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 				};
 /******/ 			}
 /******/ 		};
-/******/
+/******/ 		
 /******/ 		__webpack_require__.hmrM = () => {
 /******/ 			if (typeof fetch === "undefined") throw new Error("No browser support: need fetch API");
 /******/ 			return fetch(__webpack_require__.p + __webpack_require__.hmrF()).then((response) => {
@@ -6855,19 +6867,19 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 				return response.json();
 /******/ 			});
 /******/ 		};
-/******/
+/******/ 		
 /******/ 		// no on chunks loaded
-/******/
+/******/ 		
 /******/ 		// no jsonp function
 /******/ 	})();
-/******/
+/******/ 	
 /************************************************************************/
-/******/
+/******/ 	
 /******/ 	// module cache are used so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	var __webpack_exports__ = __webpack_require__("./index.js");
-/******/
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=main.bundle.js.map
