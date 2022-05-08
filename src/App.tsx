@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     minHeight: 800,
   },
   second: {
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
