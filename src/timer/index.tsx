@@ -1,9 +1,9 @@
 import dayjs from '../date';
-import {Card, Text} from '@rneui/themed';
+import {Text} from '@rneui/themed';
 import React, {useEffect, useState} from 'react';
 import {weddingDate} from './constants';
 import {getTimeRemaining} from './getTimeRemaining';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 export const Timer = () => {
   const [remaining, setRemaining] = useState<
@@ -28,19 +28,40 @@ export const Timer = () => {
   }, []);
 
   return (
-    <Card wrapperStyle={styles.container}>
-      <Card.Title>До свадьбы осталось:</Card.Title>
-      <Card.Divider />
-      <Text>Дней: {remaining.days}</Text>
-      <Text>Часов: {remaining.hours}</Text>
-      <Text>Минут: {remaining.minutes}</Text>
-      <Text>Секунд: {remaining.seconds}</Text>
-    </Card>
+    <View style={styles.container}>
+      <Text style={styles.text}>До свадьбы осталось:</Text>
+      <View style={styles.timer}>
+        <Text style={styles.text}>Дней {'\n' + remaining.days}</Text>
+        <Text style={styles.text}>Часов {'\n' + remaining.hours}</Text>
+        <Text style={styles.text}>Минут {'\n' + remaining.minutes}</Text>
+        <Text style={styles.text}>Секунд {'\n' + remaining.seconds}</Text>
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    backgroundColor: 'rgba(52, 52, 52, 0.8)',
+    alignItems: 'center',
+    alignSelf: 'center',
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 10,
+  },
+  timer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+  text: {
+    fontSize: 20,
+    borderWidth: 1,
+    borderRadius: 10,
+    margin: 4,
+    padding: 8,
+    fontFamily: 'Cursive',
   },
 });
