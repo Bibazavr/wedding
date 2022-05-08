@@ -5236,7 +5236,7 @@ const App = () => {
                     react_1.default.createElement(base_1.Text, { style: { fontStyle: 'italic' } },
                         "\u0441\u043A\u0430\u0436\u0443\u0442 \u0432\u0430\u0436\u043D\u044B\u0435 \u0441\u043B\u043E\u0432\u0430 \u0432\u00A0\u043E\u043A\u0440\u0443\u0436\u0435\u043D\u0438\u0438 \u0440\u043E\u0434\u043D\u044B\u0445 \u0438 \u0431\u043B\u0438\u0437\u043A\u0438\u0445 ",
                         '\n',
-                        " \u0421\u0431\u043E\u0440 \u0433\u043E\u0441\u0442\u0435\u0439 \u0432 16:00")))),
+                        "\u0421\u0431\u043E\u0440 \u0433\u043E\u0441\u0442\u0435\u0439 \u0432 16:00")))),
         react_1.default.createElement(react_native_1.ScrollView, { horizontal: true, showsHorizontalScrollIndicator: false },
             react_1.default.createElement(react_native_1.Image, { source: { uri: __webpack_require__(/*! ./img/photo7.jpg */ "./src/img/photo7.jpg"), width: 800, height: 800 } }),
             react_1.default.createElement(react_native_1.Image, { source: { uri: __webpack_require__(/*! ./img/photo.jpg */ "./src/img/photo.jpg"), width: 800, height: 800 } }),
@@ -5858,7 +5858,7 @@ module.exports = JSON.parse('{"acrobat":61696,"amazon":61697,"android":61698,"an
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("534680bd844e01d49baf")
+/******/ 		__webpack_require__.h = () => ("e8a7933c0e4524fd6dec")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
